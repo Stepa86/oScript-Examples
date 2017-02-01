@@ -355,6 +355,27 @@
 							<Representation>StrongSeparation</Representation>
 							<ExtendedTooltip name="Группа_БазаПриемникРасширеннаяПодсказка" id="18"/>
 							<ChildItems>
+								<InputField name="База_ПутьКОбработке" id="102">
+									<DataPath>База_ПутьКОбработке</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Будет выполнена перед подключением</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ChoiceButton>true</ChoiceButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Обработка1.epf</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="База_ПутьКОбработкеКонтекстноеМеню" id="103"/>
+									<ExtendedTooltip name="База_ПутьКОбработкеРасширеннаяПодсказка" id="104"/>
+									<Events>
+										<Event name="StartChoice">База_ПутьКОбработкеНачалоВыбора</Event>
+									</Events>
+								</InputField>
 								<InputField name="База_СтрокаПодключения" id="10">
 									<DataPath>База_СтрокаПодключения</DataPath>
 									<Title>
@@ -410,6 +431,13 @@
 									<ContextMenu name="Хранилище_ПарольКонтекстноеМеню" id="85"/>
 									<ExtendedTooltip name="Хранилище_ПарольРасширеннаяПодсказка" id="86"/>
 								</InputField>
+								<CheckBoxField name="Хранилище_ОбновитьПослеПодключения" id="99">
+									<DataPath>Хранилище_ОбновитьПослеПодключения</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="Хранилище_ОбновитьПослеПодключенияКонтекстноеМеню" id="100"/>
+									<ExtendedTooltip name="Хранилище_ОбновитьПослеПодключенияРасширеннаяПодсказка" id="101"/>
+								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -781,6 +809,32 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Хранилище_ОбновитьПослеПодключения" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить после подключения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="База_ПутьКОбработке" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к обработке</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
