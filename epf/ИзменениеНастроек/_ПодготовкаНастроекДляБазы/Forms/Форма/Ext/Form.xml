@@ -61,6 +61,11 @@
 					<CommandName>Form.Command.Записать</CommandName>
 					<ExtendedTooltip name="ЗаписатьРасширеннаяПодсказка" id="5"/>
 				</Button>
+				<Button name="ЗаписатьФайлИЗапустить" id="108">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗаписатьФайлИЗапустить</CommandName>
+					<ExtendedTooltip name="ЗаписатьФайлИЗапуститьРасширеннаяПодсказка" id="109"/>
+				</Button>
 				<Button name="ТестОбработки" id="94">
 					<Type>UsualButton</Type>
 					<CommandName>Form.Command.ТестОбработки</CommandName>
@@ -96,6 +101,21 @@
 					</InputHint>
 					<ContextMenu name="OSCRIPTКонтекстноеМеню" id="25"/>
 					<ExtendedTooltip name="OSCRIPTРасширеннаяПодсказка" id="26"/>
+				</InputField>
+				<InputField name="ОсновнойСкрипт" id="105">
+					<DataPath>ОсновнойСкрипт</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>D:\Folder\CopyBase.os</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ОсновнойСкриптКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="ОсновнойСкриптРасширеннаяПодсказка" id="107"/>
+					<Events>
+						<Event name="StartChoice">ОсновнойСкриптНачалоВыбора</Event>
+					</Events>
 				</InputField>
 				<InputField name="EXE1CV8" id="27">
 					<DataPath>EXE1CV8</DataPath>
@@ -542,7 +562,9 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>OSCRIPT</Field>
+			</Save>
 		</Attribute>
 		<Attribute name="EXE1CV8" id="6">
 			<Title>
@@ -865,6 +887,39 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ОсновнойСкрипт" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скрипт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ОсновнойСкрипт</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТекущийКаталог" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий каталог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Записать" id="1">
@@ -911,6 +966,26 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ТестОбработки</Action>
+		</Command>
+		<Command name="ЗаписатьФайлИЗапустить" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и запустить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать файл и запустить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьФайлИЗапустить</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
 </Form>
