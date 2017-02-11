@@ -10,29 +10,72 @@
 		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="ИмяФайлаНастроек" id="1">
-			<DataPath>ИмяФайлаНастроек</DataPath>
+		<UsualGroup name="Группа_ФайлНастроек" id="123">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Файл настроек</v8:content>
+					<v8:content>Группа файл настроек</v8:content>
 				</v8:item>
 			</Title>
-			<DropListButton>true</DropListButton>
-			<ChoiceButton>true</ChoiceButton>
-			<InputHint>
+			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>D:\Folder\DB111.base_config</v8:content>
+					<v8:content>Группа файл настроек</v8:content>
 				</v8:item>
-			</InputHint>
-			<ContextMenu name="ИмяФайлаНастроекКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="ИмяФайлаНастроекРасширеннаяПодсказка" id="3"/>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа_ФайлНастроекРасширеннаяПодсказка" id="124"/>
+			<ChildItems>
+				<InputField name="ИмяФайлаНастроек" id="1">
+					<DataPath>ИмяФайлаНастроек</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файл настроек</v8:content>
+						</v8:item>
+					</Title>
+					<DropListButton>true</DropListButton>
+					<ChoiceButton>true</ChoiceButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>D:\Folder\DB111.base_config</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ИмяФайлаНастроекКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ИмяФайлаНастроекРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">ИмяФайлаНастроекПриИзменении</Event>
+						<Event name="StartChoice">ИмяФайлаНастроекНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<Button name="Прочитать" id="6">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Прочитать</CommandName>
+					<ExtendedTooltip name="ПрочитатьРасширеннаяПодсказка" id="7"/>
+				</Button>
+				<Button name="Записать" id="4">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Записать</CommandName>
+					<ExtendedTooltip name="ЗаписатьРасширеннаяПодсказка" id="5"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="ДекорацияСоздатьКаталогПоиска" id="125">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Декорация создать каталог поиска</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияСоздатьКаталогПоискаКонтекстноеМеню" id="126"/>
+			<ExtendedTooltip name="ДекорацияСоздатьКаталогПоискаРасширеннаяПодсказка" id="127"/>
 			<Events>
-				<Event name="OnChange">ИмяФайлаНастроекПриИзменении</Event>
-				<Event name="StartChoice">ИмяФайлаНастроекНачалоВыбора</Event>
+				<Event name="URLProcessing">ДекорацияСоздатьКаталогПоискаОбработкаНавигационнойСсылки</Event>
 			</Events>
-		</InputField>
+		</LabelDecoration>
 		<UsualGroup name="Группа_Команды" id="8">
 			<Title>
 				<v8:item>
@@ -51,21 +94,6 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="Группа_КомандыРасширеннаяПодсказка" id="9"/>
 			<ChildItems>
-				<Button name="Прочитать" id="6">
-					<Type>UsualButton</Type>
-					<CommandName>Form.Command.Прочитать</CommandName>
-					<ExtendedTooltip name="ПрочитатьРасширеннаяПодсказка" id="7"/>
-				</Button>
-				<Button name="Записать" id="4">
-					<Type>UsualButton</Type>
-					<CommandName>Form.Command.Записать</CommandName>
-					<ExtendedTooltip name="ЗаписатьРасширеннаяПодсказка" id="5"/>
-				</Button>
-				<Button name="ЗаписатьФайлИЗапустить" id="108">
-					<Type>UsualButton</Type>
-					<CommandName>Form.Command.ЗаписатьФайлИЗапустить</CommandName>
-					<ExtendedTooltip name="ЗаписатьФайлИЗапуститьРасширеннаяПодсказка" id="109"/>
-				</Button>
 				<Button name="ТестОбработки" id="94">
 					<Type>UsualButton</Type>
 					<CommandName>Form.Command.ТестОбработки</CommandName>
@@ -73,93 +101,180 @@
 				</Button>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="Группа_ОбщиеПараметры" id="13">
+		<UsualGroup name="Группа_КолонкиОбщихПараметров" id="112">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Общие</v8:content>
+					<v8:content>Группа колонки общих параметров</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа общие параметры</v8:content>
+					<v8:content>Группа колонки общих параметров</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="Группа_ОбщиеПараметрыРасширеннаяПодсказка" id="14"/>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа_КолонкиОбщихПараметровРасширеннаяПодсказка" id="113"/>
 			<ChildItems>
-				<InputField name="OSCRIPT" id="24">
-					<DataPath>OSCRIPT</DataPath>
-					<DropListButton>true</DropListButton>
-					<InputHint>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>c:\Program Files (x86)\OneScript\bin\oscript.exe</v8:content>
-						</v8:item>
-					</InputHint>
-					<ContextMenu name="OSCRIPTКонтекстноеМеню" id="25"/>
-					<ExtendedTooltip name="OSCRIPTРасширеннаяПодсказка" id="26"/>
-				</InputField>
-				<InputField name="ОсновнойСкрипт" id="105">
-					<DataPath>ОсновнойСкрипт</DataPath>
-					<ChoiceButton>true</ChoiceButton>
-					<InputHint>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>D:\Folder\CopyBase.os</v8:content>
-						</v8:item>
-					</InputHint>
-					<ContextMenu name="ОсновнойСкриптКонтекстноеМеню" id="106"/>
-					<ExtendedTooltip name="ОсновнойСкриптРасширеннаяПодсказка" id="107"/>
-					<Events>
-						<Event name="StartChoice">ОсновнойСкриптНачалоВыбора</Event>
-					</Events>
-				</InputField>
-				<InputField name="EXE1CV8" id="27">
-					<DataPath>EXE1CV8</DataPath>
-					<DropListButton>true</DropListButton>
-					<ChoiceButton>true</ChoiceButton>
-					<InputHint>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>c:\Program Files (x86)\1cv8\8.3.9.2033\bin\1cv8.exe</v8:content>
-						</v8:item>
-					</InputHint>
-					<ContextMenu name="EXE1CV8КонтекстноеМеню" id="28"/>
-					<ExtendedTooltip name="EXE1CV8РасширеннаяПодсказка" id="29"/>
-					<Events>
-						<Event name="StartChoice">EXE1CV8НачалоВыбора</Event>
-					</Events>
-				</InputField>
-				<InputField name="FileBackup" id="30">
-					<DataPath>FileBackup</DataPath>
+				<UsualGroup name="Группа_ОбщиеПараметры" id="13">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Файл Backup</v8:content>
+							<v8:content>Общие</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>В этот файл будет выгружена база SQL-источник и для этой базы нужно использовать скрипт, который загрузит его в SQL-приемник</v8:content>
+							<v8:content>Группа общие параметры</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ChoiceButton>true</ChoiceButton>
-					<InputHint>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="Группа_ОбщиеПараметрыРасширеннаяПодсказка" id="14"/>
+					<ChildItems>
+						<InputField name="OSCRIPT" id="24">
+							<DataPath>OSCRIPT</DataPath>
+							<DropListButton>true</DropListButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>c:\Program Files (x86)\OneScript\bin\oscript.exe</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="OSCRIPTКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="OSCRIPTРасширеннаяПодсказка" id="26"/>
+						</InputField>
+						<InputField name="ОсновнойСкрипт" id="105">
+							<DataPath>ОсновнойСкрипт</DataPath>
+							<ChoiceButton>true</ChoiceButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>D:\Folder\CopyBase.os</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ОсновнойСкриптКонтекстноеМеню" id="106"/>
+							<ExtendedTooltip name="ОсновнойСкриптРасширеннаяПодсказка" id="107"/>
+							<Events>
+								<Event name="StartChoice">ОсновнойСкриптНачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="EXE1CV8" id="27">
+							<DataPath>EXE1CV8</DataPath>
+							<DropListButton>true</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>c:\Program Files (x86)\1cv8\8.3.9.2033\bin\1cv8.exe</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="EXE1CV8КонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="EXE1CV8РасширеннаяПодсказка" id="29"/>
+							<Events>
+								<Event name="StartChoice">EXE1CV8НачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="FileBackup" id="30">
+							<DataPath>FileBackup</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Файл Backup</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В этот файл будет выгружена база SQL-источник и для этой базы нужно использовать скрипт, который загрузит его в SQL-приемник</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ChoiceButton>true</ChoiceButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>D:\Folder\db111.bak</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="FileBackupКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="FileBackupРасширеннаяПодсказка" id="32"/>
+							<Events>
+								<Event name="StartChoice">FileBackupНачалоВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Группа_BatФайл" id="117">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>D:\Folder\db111.bak</v8:content>
+							<v8:content>BAT</v8:content>
 						</v8:item>
-					</InputHint>
-					<ContextMenu name="FileBackupКонтекстноеМеню" id="31"/>
-					<ExtendedTooltip name="FileBackupРасширеннаяПодсказка" id="32"/>
-					<Events>
-						<Event name="StartChoice">FileBackupНачалоВыбора</Event>
-					</Events>
-				</InputField>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа bat файл</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Collapsible</Behavior>
+					<ControlRepresentation>Picture</ControlRepresentation>
+					<ExtendedTooltip name="Группа_BatФайлРасширеннаяПодсказка" id="118"/>
+					<ChildItems>
+						<InputField name="ТекстBatФайла" id="114">
+							<DataPath>ТекстBatФайла</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<MaxHeight>4</MaxHeight>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ТекстBatФайлаКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="ТекстBatФайлаРасширеннаяПодсказка" id="116"/>
+						</InputField>
+						<CommandBar name="КомандыBatФайла" id="119">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды bat файла</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды bat файла</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="КомандыBatФайлаРасширеннаяПодсказка" id="120"/>
+							<ChildItems>
+								<Button name="ОбновитьСтрокуBAT" id="121">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ОбновитьСтрокуBAT</CommandName>
+									<ExtendedTooltip name="ОбновитьСтрокуBATРасширеннаяПодсказка" id="122"/>
+								</Button>
+								<Button name="ЗаписатьФайлИЗапустить" id="108">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ЗаписатьФайлИЗапустить</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Записать файл настроек и запустить</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ЗаписатьФайлИЗапуститьРасширеннаяПодсказка" id="109"/>
+								</Button>
+								<Button name="СохранитьВBat" id="110">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.СохранитьВBat</CommandName>
+									<ExtendedTooltip name="СохранитьВBatРасширеннаяПодсказка" id="111"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="Группа_Колонки" id="48">
@@ -530,6 +645,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Current_SQL_Server" id="4">
@@ -546,6 +662,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="OSCRIPT" id="5">
@@ -596,6 +713,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Script_Restore" id="8">
@@ -612,6 +730,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Current_SQL_User" id="9">
@@ -628,6 +747,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Current_SQL_Password" id="10">
@@ -644,6 +764,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="Current_SQL_Base" id="11">
 			<Title>
@@ -659,6 +780,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="ЗагружатьИзБекапа" id="12">
@@ -671,6 +793,7 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ИспользуемоеИмяФайла" id="13">
 			<Title>
@@ -701,6 +824,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Source_SQL_Password" id="15">
@@ -717,6 +841,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="Source_SQL_Base" id="16">
 			<Title>
@@ -732,6 +857,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Source_SQL_User" id="17">
@@ -748,6 +874,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="ВыгружатьБекап" id="18">
@@ -760,6 +887,7 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="База_Пользователь" id="19">
 			<Title>
@@ -775,6 +903,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="База_Пароль" id="20">
@@ -791,6 +920,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="Хранилище_Адрес" id="21">
 			<Title>
@@ -806,6 +936,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Хранилище_Пользователь" id="22">
@@ -822,6 +953,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
 		<Attribute name="Хранилище_Пароль" id="23">
@@ -838,6 +970,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПодключатьКХранилищу" id="24">
 			<Title>
@@ -849,6 +982,7 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="УдалятьБекап" id="25">
 			<Title>
@@ -860,6 +994,7 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="Хранилище_ОбновитьПослеПодключения" id="26">
 			<Title>
@@ -871,6 +1006,7 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="База_ПутьКОбработке" id="27">
 			<Title>
@@ -886,6 +1022,7 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ОсновнойСкрипт" id="28">
 			<Title>
@@ -920,6 +1057,21 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ТекстBatФайла" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст bat файла</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Записать" id="1">
@@ -932,7 +1084,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Записать</v8:content>
+					<v8:content>Записать файл настроек</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Записать</Action>
@@ -947,7 +1099,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Прочитать</v8:content>
+					<v8:content>Прочитать файл настроек</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Прочитать</Action>
@@ -986,6 +1138,36 @@
 			</Picture>
 			<Action>ЗаписатьФайлИЗапустить</Action>
 			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="СохранитьВBat" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить в bat</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить в bat</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьВBat</Action>
+		</Command>
+		<Command name="ОбновитьСтрокуBAT" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить строку BAT</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить строку BAT</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбновитьСтрокуBAT</Action>
 		</Command>
 	</Commands>
 </Form>
